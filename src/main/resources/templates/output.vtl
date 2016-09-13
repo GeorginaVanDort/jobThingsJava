@@ -1,0 +1,34 @@
+#if($jobs)
+  <h1>
+    #if($jobs.get(0).getOpening())
+    Job board
+    #else
+    My Resume
+    #end
+  </h1>
+
+  #foreach ($job in $jobs)
+    <h3>$job.getTitle()</h3>
+    <p>Description: $job.getDescription()</p>
+    <p>Company: $job.getCompany()</p>
+    <p>
+    #if($job.getOpening())
+      Starting date:
+    #else
+      Dates job held:
+    #end
+    $job.getDates()
+    </p>
+    <hr>
+  #end
+
+
+  #if($jobs.get(0).getOpening())
+  <a href="/resume">See my resume</a>
+  #else
+  <a href="/board">See job board</a>
+  #end
+#else
+  <h1>Nothing here yet!</h1>
+#end
+<br><a href="/">Go Back</a>
